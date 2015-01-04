@@ -1,0 +1,14 @@
+#
+# system.prop for P6-U06
+#
+
+rild.libpath=/system/lib/libbalong-ril.so
+rild.libargs=-m modem0
+rild.libpath1=/system/lib/libbalong-ril.so
+rild.libargs1=-m modem1
+ro.config.hisi_soc_type=true
+ro.config.hisi_rpt_mode=0
+balong.debug.on=true
+ro.ril.ecclist=112,911,#911,*911
+
+ro.sf.lcd_density=480
