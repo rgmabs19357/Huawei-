@@ -1,0 +1,61 @@
+if VIDEO_HI6620_CAMERA
+
+menu "Hisilicon K3 sock Camera/V4L2 Features support"
+config VIDEO_HIK3_ISP_CAMERA
+	tristate "Hisilicon K3 ISP"
+	depends on VIDEO_HI6620_CAMERA
+	default m
+    ---help---
+        Hisilicon K3 ISP driver.
+
+config CAMERA_WAIT_COMPLT_TIMEOUT
+    int "commond set done wait timeout"
+    default 1000
+    ---help---
+        set isp commond set done wait time
+
+config CAMERA_SENSOR_I2C_WAIT_TIMEOUT
+    int "sensor I2C wait timeout"
+    default 0
+    ---help---
+        set sensor i2c write wait time
+
+config CAMERA_WAIT_DQBUF_IRQ_TIMEOUT
+    int "data queue irq done wait timeout"
+    default 2
+    ---help---
+        set isp dqbuf irq done wait time
+
+config OV_ISP_CLK
+    int "ov isp clock frequence"
+    default 160000000
+    ---help---
+        set ov isp clock frequence
+
+config OV_ISP_MIPI_CLK
+    int "ov isp mipi clock frequence"
+    default 160000000
+    ---help---
+        set ov isp mipi clock frequence
+
+config CAMERA_WAIT_FOCUS_TIMEOUT
+    int "wait focus schedule timeout"
+    default 100
+    ---help---
+        set isp focus schedule wait time
+
+config CAMERA_SCENE_NIGHT_MODE_FPS
+    int "scene night mode fps"
+    default 1
+    ---help---
+        set isp scene night mode fps
+
+config ISP_DDR_BLOCK_PROFILE
+    int "isp ddr block profile frequence"
+    default 533000
+    ---help---
+        set isp ddr block profile frequence
+
+endmenu
+
+endif

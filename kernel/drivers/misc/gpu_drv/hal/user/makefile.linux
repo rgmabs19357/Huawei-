@@ -1,0 +1,179 @@
+##############################################################################
+#
+#    Copyright (c) 2005 - 2013 by Vivante Corp.  All rights reserved.
+#
+#    The material in this file is confidential and contains trade secrets
+#    of Vivante Corporation. This is proprietary information owned by
+#    Vivante Corporation. No part of this work may be disclosed,
+#    reproduced, copied, transmitted, or used in any way for any purpose,
+#    without the express written permission of Vivante Corporation.
+#
+##############################################################################
+
+
+#
+# Linux build file for user HAL layer.
+#
+
+################################################################################
+# Include common definitions.
+
+include $(AQROOT)/makefile.linux.def
+
+################################################################################
+# Define shared library output name.
+
+ifeq ($(gcdSTATIC_LINK), 1)
+    STATIC = 1
+else
+    DYNAMIC = 1
+endif
+
+ifeq ($(STATIC), 1)
+    TARGET_NAME = libGAL.a
+else
+    TARGET_NAME = libGAL.so
+endif
+
+################################################################################
+# Installation directory
+
+INSTALL_DIR = $(SDK_DIR)/drivers
+
+################################################################################
+# Supply additional include directories.
+
+INCLUDE += -I$(AQROOT)/hal/inc
+INCLUDE += -I$(AQROOT)/hal/user
+
+ifneq ($(QNX), 1)
+INCLUDE += -I$(AQROOT)/hal/os/linux/user
+	ifeq ($(EGL_API_WL), 1)
+	    INCLUDE += -I$(WAYLAND_DIR)/include
+	    INCLUDE += -I$(WAYLAND_DIR)/include/wayland-viv
+       endif
+    ifeq ($(EGL_API_DFB), 1)
+        INCLUDE += -I$(DFB_DIR)/usr/include
+        INCLUDE += -I$(DFB_DIR)/include
+        INCLUDE += -I$(DFB_DIR)/include/directfb-internal
+        INCLUDE += -I$(DFB_DIR)/include/directfb
+	endif
+       ifeq ($(EGL_API_DRI), 1)
+           INCLUDE += -I$(X11_ARM_DIR)/include
+       endif
+else
+INCLUDE += -I$(AQROOT)/hal/os/qnx/user
+endif
+
+CFLAGS += $(INCLUDE)
+
+################################################################################
+# Add extra flags for object files.
+
+ifneq ($(USE_ARMCC), 1)
+ifeq ($(EGL_API_DFB), 1)
+CFLAGS  += -pipe -fPIC
+else
+ifeq ($(EGL_API_WL), 1)
+CFLAGS += -fPIC -Werror
+else
+CFLAGS += -fPIC -Werror -ansi
+endif
+endif
+LFLAGS += -Wl,--version-script=libGAL.map
+endif
+
+ifeq ($(EGL_API_DFB), 1)
+CFLAGS  += -D_GNU_SOURCE -DPIC
+endif
+
+################################################################################
+# Build 2D only driver
+CFLAGS += -DVIVANTE_NO_3D
+
+################################################################################
+# Supply necessary libraries.
+LIBS += -lm -lpthread -ldl
+
+# Specify Vivante library paths.
+LIBS += -L $(AQARCH)/hal/user/$(OBJ_DIR)
+LIBS += -L $(AQROOT)/hal/user/$(OBJ_DIR)
+
+ifeq ($(EGL_API_DRI), 1)
+LIBS += -L$(X11_ARM_DIR)/lib -lXdamage -lXfixes -lXext -lX11
+endif
+
+ifeq ($(EGL_API_WL), 1)
+#LIBS += -L$(WAYLAND_DIR)/lib -lwayland-client
+LIBS += -L$(WAYLAND_DIR)/lib -lgc_wayland_protocol -lwayland-server
+endif
+
+ifneq ($(QNX), 1)
+LIBS += -L $(AQROOT)/hal/os/linux/user/$(OBJ_DIR)
+else
+LIBS += -L $(AQROOT)/hal/os/qnx/user/$(OBJ_DIR)
+endif
+
+ifeq ($(EGL_API_DFB), 1)
+    LIBS    += -L$(DFB_DIR)/lib -ldirectfb -ldirect -lz
+endif
+
+# Specify Vivante libraries twice to resolve references between libraries.
+LIBS += -l halarchuser -l halosuser
+LIBS += -l halarchuser -l halosuser
+################################################################################
+# Describe object files.
+
+OBJECTS = $(OBJ_DIR)/gc_hal_user_brush.o \
+          $(OBJ_DIR)/gc_hal_user_brush_cache.o \
+          $(OBJ_DIR)/gc_hal_user_dump.o \
+          $(OBJ_DIR)/gc_hal_user.o \
+          $(OBJ_DIR)/gc_hal_user_raster.o \
+          $(OBJ_DIR)/gc_hal_user_heap.o \
+          $(OBJ_DIR)/gc_hal_user_query.o \
+          $(OBJ_DIR)/gc_hal_user_rect.o \
+          $(OBJ_DIR)/gc_hal_user_buffer.o \
+          $(OBJ_DIR)/gc_hal_user_surface.o \
+          $(OBJ_DIR)/gc_hal_user_queue.o \
+
+
+ifeq ($(USE_PROFILER),1)
+OBJECTS += $(OBJ_DIR)/gc_hal_user_profiler.o
+endif
+
+include $(AQROOT)/common.target
+
+################################################################################
+# Extra source code.
+
+
+ifneq ($(QNX), 1)
+    OS_DIR=linux
+else
+    OS_DIR=qnx
+endif
+
+$(TARGET_OUTPUT): $(AQARCH)/hal/user/$(OBJ_DIR)/libhalarchuser.a \
+                  $(AQROOT)/hal/os/$(OS_DIR)/user/$(OBJ_DIR)/libhalosuser.a
+
+################################################################################
+# Extra installation.
+
+install: extra_install
+
+.PHONY: extra_install
+extra_install:
+	@mkdir -p $(SDK_DIR)/drivers
+	@mkdir -p $(SDK_DIR)/include/HAL
+	@cp $(AQROOT)/hal/inc/gc_hal_enum.h $(SDK_DIR)/include/HAL
+	@cp $(AQROOT)/hal/inc/gc_hal_types.h $(SDK_DIR)/include/HAL
+	@cp $(AQROOT)/hal/inc/gc_hal_version.h $(SDK_DIR)/include/HAL
+	@cp $(AQROOT)/hal/inc/gc_hal_base.h $(SDK_DIR)/include/HAL
+	@cp $(AQROOT)/hal/inc/gc_hal_raster.h $(SDK_DIR)/include/HAL
+	@cp $(AQROOT)/hal/inc/gc_hal.h $(SDK_DIR)/include/HAL
+	@cp $(AQROOT)/hal/inc/gc_hal_options.h $(SDK_DIR)/include/HAL
+	@cp $(AQROOT)/hal/inc/gc_hal_profiler.h $(SDK_DIR)/include/HAL
+	@cp $(AQROOT)/hal/inc/gc_hal_dump.h $(SDK_DIR)/include/HAL
+	@cp $(AQROOT)/hal/inc/gc_hal_driver.h $(SDK_DIR)/include/HAL
+	@cp $(AQROOT)/hal/inc/gc_hal_rename.h $(SDK_DIR)/include/HAL
+	@cd $(SDK_DIR)/include/HAL; echo "#include \"HAL/gc_hal.h\"" >aqHal.h; cd -

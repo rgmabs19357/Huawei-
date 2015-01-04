@@ -1,0 +1,17 @@
+menu "Bluetooth device drivers"
+source "drivers/huawei/drivers/connectivity/bluetooth/Kconfig"
+endmenu
+
+
+menu "wi-Fi device drivers"
+source "drivers/huawei/drivers/connectivity/wifi/Kconfig"
+
+endmenu
+
+menu "GPS device drivers"
+source "drivers/huawei/drivers/connectivity/gps/Kconfig"
+endmenu
+
+menu "NFC device drivers"
+source "drivers/huawei/drivers/connectivity/nfc/Kconfig"
+endmenu

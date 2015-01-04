@@ -1,0 +1,8 @@
+
+menu "hisi balong support driver - test"
+config HISI_TEST
+     bool "hisi test module"
+     help
+          hisi test module.
+endmenu
+

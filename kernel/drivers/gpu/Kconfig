@@ -1,0 +1,6 @@
+config MALI_DEVICE 
+	bool "mali device"
+	help
+
+source "drivers/gpu/mali/Kconfig"
+source "drivers/gpu/ump/Kconfig"

@@ -1,0 +1,87 @@
+config HI6620_CAMERA_FLASH
+	tristate "Hisilicon K3 flash"
+	depends on VIDEO_HI6620_CAMERA && VIDEO_HIK3_ISP_CAMERA
+	default n
+	---help---
+	Hisilicon K3 flash driver
+	
+
+config HI6620_CAMERA_FLASH_LM3642
+	tristate "lm3642 flash"
+	depends on VIDEO_HI6620_CAMERA && VIDEO_HIK3_ISP_CAMERA && HI6620_CAMERA_FLASH
+	default n
+	---help---
+	Hisilicon K3 flash driver
+	
+
+config HI6620_CAMERA_FLASH_TPS61310
+	tristate "tps61310 flash"
+	depends on VIDEO_HI6620_CAMERA && VIDEO_HIK3_ISP_CAMERA && HI6620_CAMERA_FLASH
+	default n
+	---help---
+	Hisilicon K3 flash driver
+
+
+config HI6620_CAMERA_HI542
+    tristate "HI542 camera"
+    depends on VIDEO_HI6620_CAMERA && VIDEO_HIK3_ISP_CAMERA
+    default n
+    ---help---
+        HI542 camera driver
+
+config HI6620_CAMERA_S5K4E1GA_FOXCONN
+    tristate "S5K4E1GA_FOXCONN camera"
+    depends on VIDEO_HI6620_CAMERA && VIDEO_HIK3_ISP_CAMERA
+    default n
+    ---help---
+        S5K4E1GA_FOXCONN camera driver
+
+config HI6620_CAMERA_SONYIMX134
+    tristate "SONYIMX134 camera"
+    depends on VIDEO_HI6620_CAMERA && VIDEO_HIK3_ISP_CAMERA
+    default n
+    ---help---
+        HiSONYIMX134 camera driver
+
+config HI6620_CAMERA_SONYIMX135
+    tristate "SONYIMX135 camera"
+    depends on VIDEO_HI6620_CAMERA && VIDEO_HIK3_ISP_CAMERA
+    default n
+    ---help---
+        HiSONYIMX135 camera driver
+
+config HI6620_CAMERA_SONYIMX214
+    tristate "SONYIMX214 camera"
+    depends on VIDEO_HI6620_CAMERA && VIDEO_HIK3_ISP_CAMERA
+    default n
+    ---help---
+        HiSONYIMX214 camera driver
+
+config HI6620_CAMERA_OV5648_FOXCONN
+    tristate "OV5648_foxconn camera"
+    depends on VIDEO_HI6620_CAMERA && VIDEO_HIK3_ISP_CAMERA
+    default n
+    ---help---
+        OV5648_FOXCONN camera driver
+
+config HI6620_CAMERA_OV5648_SUNNY
+    tristate "OV5648_sunny camera"
+    depends on VIDEO_HI6620_CAMERA && VIDEO_HIK3_ISP_CAMERA
+    default n
+    ---help---
+        OV5648_SUNNY camera driver
+config HI6620_CAMERA_S5K4E1GX_FOXCONN
+    tristate "S5K4E1GX_FOXCONN camera"
+    depends on VIDEO_HI6620_CAMERA && VIDEO_HIK3_ISP_CAMERA
+    default n
+    ---help---
+        S5K4E1GX_FOXCONN camera driver
+
+config HI6620_CAMERA_SONYIMX179
+    tristate "SONYIMX179 camera"
+    depends on VIDEO_HI6620_CAMERA && VIDEO_HIK3_ISP_CAMERA
+    default n
+    ---help---
+        HiSONYIMX179 camera driver
+
+source "drivers/huawei/drivers/camera/flash/Kconfig"

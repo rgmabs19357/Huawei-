@@ -1,0 +1,55 @@
+menu "Audio device drivers"
+#source "drivers/huawei/drivers/audio/Kconfig"
+endmenu
+
+menu "Camera sensor device drivers"
+source "drivers/huawei/drivers/camera/Kconfig"
+endmenu
+
+menu "Connectivity device drivers"
+source "drivers/huawei/drivers/connectivity/Kconfig"
+endmenu
+
+#source "drivers/huawei/drivers/keypad/Kconfig"
+
+menu "LCD device drivers"
+source "drivers/huawei/drivers/lcd_panel/Kconfig"
+endmenu
+
+menu "LED device drivers"
+source "drivers/huawei/drivers/led/Kconfig"
+endmenu
+
+menu "Misc device drivers"
+#source "drivers/huawei/drivers/misc/Kconfig"
+endmenu
+
+source "drivers/huawei/drivers/modem/Kconfig"
+
+menu "Power supply device drivers"
+source "drivers/huawei/drivers/power/Kconfig"
+endmenu
+
+menu "Sensor device drivers"
+source "drivers/huawei/drivers/sensor/Kconfig"
+endmenu
+
+#source "drivers/huawei/drivers/thermal/Kconfig"
+
+menu "Touchscreen device drivers"
+source "drivers/huawei/drivers/touchscreen/Kconfig"
+endmenu
+
+#source "drivers/huawei/drivers/video/Kconfig"
+
+source "drivers/huawei/drivers/tfa9887/Kconfig"
+
+source "drivers/huawei/drivers/audience/Kconfig"
+
+source "drivers/huawei/drivers/modemctl/Kconfig"
+
+source "drivers/huawei/drivers/simcard_switch/Kconfig"
+
+source "drivers/huawei/drivers/hw_kstate/Kconfig"
+
+source "drivers/huawei/drivers/dsm/Kconfig"

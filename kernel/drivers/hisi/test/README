@@ -1,0 +1,30 @@
+此目录为acore的UTAT测试代码编译目录。
+按照<BalongV9R1 UTAT设计要求.docx>实现完成。
+
+1、单独编译
+make  //编译所有测试代码为built-in.o
+make clean //清理所有编译生成的中间文件
+
+2、联编
+system/android/android-4.03/kernel/Android.mk中BALONG_DEBUG_PATH注释掉
+测试代码就不会编译进内核中。
+
+3、添加代码
+按照设计要求添加目录和代码，在相关目录makefile中添加obj-y += xxx.o
+参考hwdrv/tp_tm1319/目录
+
+4、关于生成ko
+obj-m += xxx.o可以编译对应ko
+
+5、关于代码结构
+测试代码目录下包含test_xxx__drv.c  test_xxx__drv.h
+test_acore.c通过全路径包含对应的头文件#include "ipdrv/xxx/test_xxx_drv.h"
+
+6、关于测试
+首先确保系统中有ecall，
+调用形式
+ecall test_acore {all}  测试所有函数
+ecall test_acore {1}    测试用例1
+ecall test_acore {1.2}  测试用例1，2 注意间隔符是.不能是，或者其他！
+成功返回零，失败返回全f
+

@@ -1,0 +1,20 @@
+#
+# hall sensor driver configuration
+#
+menuconfig INPUT_HALL_SENSOR
+	bool "hall sensor"
+	select HUAWEI_SENSORS_INPUT_INFO
+	default y
+	help
+		Say Y here, and a list of supported hall sensors will be displayed.
+		This option doesn't affect the kernel.
+
+
+if INPUT_HALL_SENSOR
+
+config HUAWEI_FEATURE_AK8789
+	tristate "ak8789_hall"
+	default y
+	help
+	  If you say yes here you get support for light hall ak8789.
+endif

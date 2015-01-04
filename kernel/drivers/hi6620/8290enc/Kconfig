@@ -1,0 +1,20 @@
+menu "8290 encode support"
+
+config 8290_ENC
+    tristate "Support for hisi k3 video encode processor"
+    help
+        The encode device provides decode function for H.264/JPEG
+
+config 8290_ENC_CLK
+    int "8290 Encode Clock Frequence"
+    default "280000000"
+    help
+        Set default 8290 encode clock frequence
+
+config 8290_ENC_WAIT_TIMEOUT_COEFF
+    int "8290 encode wait timeout coefficient"
+    default "1"
+    help
+        Set default 8290 encode wait timeout coefficient
+
+endmenu

@@ -1,0 +1,4 @@
+if X86
+source "drivers/platform/x86/Kconfig"
+endif
+source "drivers/platform/tp_color/Kconfig"

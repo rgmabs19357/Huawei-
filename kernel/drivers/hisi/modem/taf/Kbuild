@@ -1,0 +1,159 @@
+EXTRA_CFLAGS += -Iarch/arm/mach-balong/include/mach
+EXTRA_CFLAGS += -Iarch/arm/include/asm
+EXTRA_CFLAGS += -Iinclude/linux
+EXTRA_CFLAGS += -Iinclude/generated
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/med
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/oam/comm/osa
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/nv/gu/codec
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/oam/comm/om/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/oam/gu/nvim/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/oam/gu/log/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/oam/gu/om/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/oam/comm/si/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/oam/comm/usimm/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/oam/comm/errno/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/oam/comm/socp/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/oam/comm/nvim/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/nv/gu/oam/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/nv/gu/codec/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/nv/gu/nas/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/nv/gu/was/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/nv/gu/ttf/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/nv/gu/gas/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/taf/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/ps/tlps/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/ps/gups/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/ps/nas/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/config/osa/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/config/nvim/include/gu/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/ps/inc/gu/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/taf/inc/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/oam/inc/comm/ccore/om
+EXTRA_CFLAGS += -Idrivers/hisi/modem/oam/inc/gu/comm/om
+EXTRA_CFLAGS += -Idrivers/hisi/modem/oam/inc/gu/acore/om
+EXTRA_CFLAGS += -Idrivers/hisi/modem/oam/inc/gu/ccore/om
+EXTRA_CFLAGS += -Idrivers/hisi/modem/taf/comm/src/acore/ADS/Inc/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/taf/comm/src/acore/APPVCOM/Inc/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/taf/comm/src/acore/at/inc/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/taf/comm/src/acore/CSD/Inc/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/taf/comm/src/acore/RNIC/Inc/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/taf/comm/src/acore/TAFAGENT/Inc/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/taf/comm/src/acore/tafapi/inc/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/taf/comm/src/mcore/TAF/Lib/Inc/
+
+ifneq ($(CFG_RAT_MODE),RAT_GU)
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/oam/lt/msp/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/include/vendor/hisi/include/oam/lt/diag/
+EXTRA_CFLAGS += -Idrivers/hisi/modem/oam/inc/lt/comm/sdm
+EXTRA_CFLAGS += -Idrivers/hisi/modem/oam/inc/lt/comm/sda
+EXTRA_CFLAGS += -Idrivers/hisi/modem/oam/inc/lt/comm/diag
+EXTRA_CFLAGS += -Idrivers/hisi/modem/taf/lt/inc/acore/at
+endif
+
+EXTRA_CFLAGS += -D__LINUX_ARM_ARCH__=7 -march=armv7-a -Uarm -DVOS_LINUX=4 -DOSA_CPU_ACPU=1 -DVOS_OS_VER=VOS_LINUX -DVOS_OSA_CPU=OSA_CPU_ACPU -D__LOG_RELEASE__ \
+				-DBSP_CORE_APP -DGU_MODE -DMSP_SUPPORT_USB_VCOM1 -DMSP_SUPPORT_USB_VCOM2 -DVOS_DOPRA_VER=2 -DNDIS_RELEASE \
+				-DBALONG_PHY_V200=2 -DBALONG_PHY_V300=3 -DBALONG_PHY_VER=BALONG_PHY_V300 -DBALONG_CHIP_V200=2 \
+				-DBALONG_CHIP_V300=3 -DBALONG_CHIP_V500=4 -DBALONG_CHIP_VER=BALONG_CHIP_V500 -DMSP_GUNAS_AT_UNITE -DVERSION_V3R2 
+
+ifneq ($(CFG_RAT_MODE),RAT_GU)
+EXTRA_CFLAGS += -DHAL_DIAG_SDM_USE
+endif 				
+				
+#编译器相关的宏定义
+EXTRA_CFLAGS += -fsigned-char 
+
+TAF-objs := comm/src/acore/ADS/Src/AdsCtx.o
+TAF-objs += comm/src/acore/ADS/Src/AdsDownLink.o
+TAF-objs += comm/src/acore/ADS/Src/AdsInit.o
+TAF-objs += comm/src/acore/ADS/Src/AdsTimerMgmt.o
+TAF-objs += comm/src/acore/ADS/Src/AdsUpLink.o
+TAF-objs += comm/src/acore/ADS/Src/AdsDebug.o
+TAF-objs += comm/src/acore/ADS/Src/AdsFilter.o
+TAF-objs += comm/src/acore/APPVCOM/Src/AppVcomDev.o
+TAF-objs += comm/src/acore/CSD/Src/CsdCtx.o
+TAF-objs += comm/src/acore/CSD/Src/CsdDebug.o
+TAF-objs += comm/src/acore/CSD/Src/CsdDownLink.o
+TAF-objs += comm/src/acore/CSD/Src/CsdUpLink.o
+TAF-objs += comm/src/acore/CSD/Src/CsdInit.o
+TAF-objs += comm/src/acore/RNIC/Src/RnicCtx.o
+TAF-objs += comm/src/acore/RNIC/Src/RnicEntity.o
+TAF-objs += comm/src/acore/RNIC/Src/RnicInit.o
+TAF-objs += comm/src/acore/RNIC/Src/RnicProcMsg.o
+TAF-objs += comm/src/acore/RNIC/Src/RnicTimerMgmt.o
+TAF-objs += comm/src/acore/RNIC/Src/RnicDebug.o
+TAF-objs += comm/src/acore/RNIC/Src/RnicDemandDialFileIO.o
+TAF-objs += comm/src/mcore/TAF/Lib/Src/Taf_MmiStrParse.o
+TAF-objs += comm/src/mcore/TAF/Lib/Src/MnMsgDecode.o
+TAF-objs += comm/src/mcore/TAF/Lib/Src/TafApsApi.o
+TAF-objs += comm/src/mcore/TAF/Lib/Src/MnMsgEncode.o
+TAF-objs += comm/src/mcore/TAF/Lib/Src/MnMsgCbEncDec.o
+TAF-objs += comm/src/mcore/TAF/Lib/Src/hi_list.o
+TAF-objs += comm/src/mcore/TAF/Lib/Src/TafMmiEncode.o
+TAF-objs += comm/src/mcore/TAF/Lib/Src/TafStdlib.o
+TAF-objs += comm/src/acore/TAFAGENT/Src/TafAgent.o
+TAF-objs += comm/src/acore/TAFAGENT/Src/TafAgentCtx.o
+TAF-objs += comm/src/acore/at/src/AtBasicCmd.o
+TAF-objs += comm/src/acore/at/src/AtCheckFunc.o
+TAF-objs += comm/src/acore/at/src/AtCmdFtmProc.o
+TAF-objs += comm/src/acore/at/src/AtCmdMsgProc.o
+TAF-objs += comm/src/acore/at/src/ATCmdProc.o
+TAF-objs += comm/src/acore/at/src/AtCmdPacketProc.o
+TAF-objs += comm/src/acore/at/src/AtCmdSimProc.o
+TAF-objs += comm/src/acore/at/src/AtCombinecmd.o
+TAF-objs += comm/src/acore/at/src/AtDataProc.o
+TAF-objs += comm/src/acore/at/src/AtDeviceCmd.o
+TAF-objs += comm/src/acore/at/src/AtEventReport.o
+TAF-objs += comm/src/acore/at/src/AtCmdImsProc.o
+TAF-objs += comm/src/acore/at/src/AtExtendCmd.o
+TAF-objs += comm/src/acore/at/src/AtExtendPrivateCmd.o
+TAF-objs += comm/src/acore/at/src/AtInputProc.o
+TAF-objs += comm/src/acore/at/src/AtMntn.o
+TAF-objs += comm/src/acore/at/src/AtMsgPrint.o
+TAF-objs += comm/src/acore/at/src/AtOutputProc.o
+TAF-objs += comm/src/acore/at/src/AtParseBasicCmd.o
+TAF-objs += comm/src/acore/at/src/AtParseCmd.o
+TAF-objs += comm/src/acore/at/src/AtParseCore.o
+TAF-objs += comm/src/acore/at/src/AtParseDCmd.o
+TAF-objs += comm/src/acore/at/src/AtParseDMCmd.o
+TAF-objs += comm/src/acore/at/src/AtParseExtendCmd.o
+TAF-objs += comm/src/acore/at/src/AtParsePara.o
+TAF-objs += comm/src/acore/at/src/AtParseSCmd.o
+TAF-objs += comm/src/acore/at/src/AtQueryParaCmd.o
+TAF-objs += comm/src/acore/at/src/AtSetParaCmd.o
+TAF-objs += comm/src/acore/at/src/AtTestParaCmd.o
+TAF-objs += comm/src/acore/at/src/AtTimer.o
+TAF-objs += comm/src/acore/at/src/ATSndMsg.o
+TAF-objs += comm/src/acore/at/src/AtAbortParaCmd.o
+TAF-objs += comm/src/acore/at/src/AtCtx.o
+TAF-objs += comm/src/acore/at/src/AtInit.o
+TAF-objs += comm/src/acore/tafapi/src/MmaRemote.o
+TAF-objs += comm/src/acore/tafapi/src/MnCallApi.o
+TAF-objs += comm/src/acore/tafapi/src/MnCommApi.o
+TAF-objs += comm/src/acore/tafapi/src/MnMsgApi.o
+TAF-objs += comm/src/acore/tafapi/src/Ssa_App_Remote.o
+TAF-objs += comm/src/acore/tafapi/src/Taf_Tafm_AppRemote.o
+TAF-objs += comm/src/acore/tafapi/src/VcApi.o
+TAF-objs += comm/src/acore/dms/src/dms_acm_at_rx.o
+TAF-objs += comm/src/acore/dms/src/dms_acm_at_tx.o
+TAF-objs += comm/src/acore/dms/src/dms_core.o
+TAF-objs += comm/src/acore/dms/src/dms_debug.o
+TAF-objs += comm/src/acore/dms/src/dms_ndis.o
+
+ifneq ($(CFG_RAT_MODE),RAT_GU)
+TAF-objs += lt/src/acore/at/at_lte_common.o
+TAF-objs += lt/src/acore/at/at_lte_ct_ex_proc.o
+TAF-objs += lt/src/acore/at/at_lte_ct_ex2_proc.o
+TAF-objs += lt/src/acore/at/at_lte_ct_proc.o
+TAF-objs += lt/src/acore/at/at_lte_eventreport.o
+TAF-objs += lt/src/acore/at/at_lte_ms_proc.o
+TAF-objs += lt/src/acore/at/at_lte_set_proc.o
+TAF-objs += lt/src/acore/at/at_lte_st_proc.o
+TAF-objs += lt/src/acore/at/at_lte_upgrade_proc.o 
+TAF-objs += lt/src/acore/at/AtDeviceCmdTL.o 
+TAF-objs += lt/src/acore/at/at_comm_cmd.o 
+endif
+
+obj-y  := TAF.o
+
+
+

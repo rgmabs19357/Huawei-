@@ -1,0 +1,72 @@
+##############################################################################
+#
+#    Copyright (c) 2005 - 2013 by Vivante Corp.  All rights reserved.
+#
+#    The material in this file is confidential and contains trade secrets
+#    of Vivante Corporation. This is proprietary information owned by
+#    Vivante Corporation. No part of this work may be disclosed,
+#    reproduced, copied, transmitted, or used in any way for any purpose,
+#    without the express written permission of Vivante Corporation.
+#
+##############################################################################
+
+
+SYNCHRONIZE_DRAIN=1
+TARGETNAME=libGALCore
+TARGETTYPE=DYNLINK
+
+CDEFINES=$(CDEFINES) /EHsc
+
+SOURCES= \
+    gc_hal_kernel_ce.cpp \
+    gc_hal_kernel_os.cpp \
+    gc_hal_kernel_kernel.cpp \
+    gc_hal_kernel_debug.cpp \
+    gc_hal_kernel_math.c \
+
+ARM_SOURCES= \
+    gc_hal_kernel_dsb.s \
+
+!IF "$(_TGTCPU)" == "ARMV7"
+CDEFINES= $(CDEFINES) /DDSB_AVAILABLE
+ADEFINES=$(ADEFINES) -pd "DSB_AVAILABLE SETL {TRUE}"
+!ENDIF
+
+INCLUDES= \
+    $(INCLUDES); \
+    $(AQROOT)\hal\inc; \
+    $(AQROOT)\hal\kernel; \
+    $(AQARCH)\hal\kernel; \
+    $(AQROOT)\hal\user; \
+    $(AQVGARCH)\hal\kernel; \
+
+TARGETLIBS= \
+    $(GCLIB_PATH)\arch.kernel.lib \
+    $(GCLIB_PATH)\hal.kernel.lib \
+    $(_COMMONOAKROOT)\lib\$(_CPUINDPATH)\ceddk.lib \
+    $(_COMMONSDKROOT)\lib\$(_CPUINDPATH)\coredll.lib \
+    $(_COMMONSDKROOT)\lib\$(_CPUINDPATH)\Mmtimer.lib \
+
+!IF "$(VIVANTE_ENABLE_VG)" == "1"
+TARGETLIBS= \
+    $(TARGETLIBS) \
+    $(GCLIB_PATH)\arch.kernel.vg.lib \
+
+!ENDIF
+
+!IF "$(_TGTPLAT)" == "Emulator" || "$(_TGTPLAT)" == "DeviceEmulator"
+INCLUDES= \
+    $(INCLUDES); \
+
+TARGETLIBS= \
+  $(TARGETLIBS) \
+
+!ENDIF
+
+DEFFILE=libGALCore.def
+
+##########################################################
+# Install results
+
+!INCLUDE $(AQROOT)\wince_install.inc
+

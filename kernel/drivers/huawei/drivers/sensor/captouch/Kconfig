@@ -1,0 +1,25 @@
+#
+# compass driver configuration
+#
+menuconfig INPUT_CAPTOUCH
+	bool "CAPTOUCH"
+	select HUAWEI_SENSORS_INPUT_INFO
+	default y
+	help
+		Say Y here, and a list of supported COMPASSs will be displayed.
+		This option doesn't affect the kernel.
+
+
+
+if INPUT_CAPTOUCH
+
+config HUAWEI_FEATURE_SENSORS_AD7146
+	tristate "AD7146"
+	default y
+	depends on I2C
+	help
+		If you say yes here you get support for Asahi Kasei's
+		orientation sensor AD7146.
+
+
+endif

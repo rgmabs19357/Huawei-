@@ -1,0 +1,66 @@
+##############################################################################
+#
+#    Copyright (c) 2005 - 2013 by Vivante Corp.  All rights reserved.
+#
+#    The material in this file is confidential and contains trade secrets
+#    of Vivante Corporation. This is proprietary information owned by
+#    Vivante Corporation. No part of this work may be disclosed,
+#    reproduced, copied, transmitted, or used in any way for any purpose,
+#    without the express written permission of Vivante Corporation.
+#
+##############################################################################
+
+
+#
+# Linux build file for architecture dependent user HAL layer.
+#
+#
+
+
+################################################################################
+# Include common definitions.
+
+include $(AQROOT)/makefile.linux.def
+
+################################################################################
+# Define a shortcut for the main target.
+
+STATIC = 1
+TARGET_NAME = libhalarchuser.a
+
+################################################################################
+# Supply additional include directories.
+
+INCLUDE += -I$(AQROOT)/hal/inc
+INCLUDE += -I$(AQROOT)/hal/user
+INCLUDE += -I$(AQROOT)/hal/os/linux/user
+INCLUDE += -I$(AQVGARCH)/hal/user
+
+CFLAGS += $(INCLUDE)
+
+ifneq ($(USE_ARMCC), 1)
+CFLAGS += -fPIC -Wno-unused-function -Werror -ansi
+
+endif
+
+    CFLAGS += -DVIVANTE_NO_3D
+
+################################################################################
+# Describe object files.
+
+OBJECTS  = $(OBJ_DIR)/gc_hal_user_hardware_blt.o \
+           $(OBJ_DIR)/gc_hal_user_hardware_filter_blt_vr.o \
+           $(OBJ_DIR)/gc_hal_user_hardware.o \
+           $(OBJ_DIR)/gc_hal_user_hardware_pattern.o \
+           $(OBJ_DIR)/gc_hal_user_hardware_pipe.o \
+           $(OBJ_DIR)/gc_hal_user_hardware_primitive.o \
+           $(OBJ_DIR)/gc_hal_user_hardware_query.o \
+           $(OBJ_DIR)/gc_hal_user_hardware_source.o \
+           $(OBJ_DIR)/gc_hal_user_hardware_target.o
+
+
+ifeq ($(gcdSTATIC_LINK), 1)
+INSTALL_DIR = $(SDK_DIR)/drivers
+endif
+
+include $(AQROOT)/common.target

@@ -1,0 +1,14 @@
+
+LIBRARY libGALCore
+
+EXPORTS
+    GPU_Init
+    GPU_Deinit
+    GPU_Open
+    GPU_Close
+    GPU_Read
+    GPU_Write
+    GPU_Seek
+    GPU_IOControl
+    GPU_PowerDown
+    GPU_PowerUp

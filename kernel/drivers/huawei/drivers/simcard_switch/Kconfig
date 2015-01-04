@@ -1,0 +1,5 @@
+config SIM_CARD_SWITCH
+    tristate "Modem Contrl Driver"
+	default y
+	help
+		Say Y to enable Modem Contrl Support

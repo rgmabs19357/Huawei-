@@ -1,0 +1,37 @@
+config LCD_JDI_OTM1282B
+        tristate "JDI_OTM1282B 720p LCD support"
+        help
+          JDI 720p LCD support, please choose it.
+
+config LCD_CMI_OTM1282B
+        tristate "CMI_OTM1282B 720p LCD support"
+        help
+          JDI 720p LCD support, please choose it.
+
+config LCD_JDI_OTM1902B
+        tristate "JDI_OTM1902B 1080p LCD support"
+        help
+          JDI 1080p LCD support, please choose it.
+
+config TPS65132
+        tristate "TPS65132 support"
+        help
+          TPS65132 support, please choose it.
+
+config LCD_SAMSUNG_LMS350DF04
+       tristate "SAMSUNG_LMS350DF04 480x320 LCD support"
+       help
+         Samsung 480x320 LCD support, please choose it.
+
+config LCD_TOSHIBA_MDW70
+       tristate "TOSHIBA_MDW70 720p LCD support"
+       help
+         Toshiba 720p LCD support, please choose it.
+
+config LCD_TOSHIBA_MDY90
+	tristate "TOSHIBA_MDY90 1080p LCD support"
+	help
+	  Toshiba 1080p LCD support,
+	  please choose it.
+
+

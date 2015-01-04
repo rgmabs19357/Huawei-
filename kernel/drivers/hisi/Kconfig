@@ -1,0 +1,12 @@
+
+menu "hisi balong support driver"
+config HISI
+     bool "hisi drv module"
+     help
+          hisi drv module.
+
+source "drivers/hisi/test/Kconfig"
+source "drivers/hisi/hifidsp/Kconfig"
+
+endmenu
+

@@ -1,0 +1,11 @@
+#menu "Rmi device drivers"
+#source "drivers/huawei/drivers/touchscreen/rmi/Kconfig"
+#endmenu
+
+#@menu "Cypress device drivers"
+#source "drivers/huawei/drivers/touchscreen/cypress/Kconfig"
+#endmenu
+
+menu "Cypress device drivers"
+source "drivers/huawei/drivers/touchscreen/ts/Kconfig"
+endmenu

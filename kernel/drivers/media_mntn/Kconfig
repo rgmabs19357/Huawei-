@@ -1,0 +1,14 @@
+#
+# Video configuration
+#
+
+menu "media mntn"
+
+config MEDIA_VIDEO_MNTN
+	tristate
+	default y
+	help
+	  This module adds support for mntn
+
+endmenu
+

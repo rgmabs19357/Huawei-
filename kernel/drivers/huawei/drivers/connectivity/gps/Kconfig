@@ -1,0 +1,14 @@
+
+menu "GPS BCM 4752 Driver"   
+                                             
+comment "GPS BCM 4752 Driver"
+
+config GPS_BCM_4752
+        tristate "GPS Boardcom(4752) Driver Support"
+        default y
+        ---help---
+	  Say Y here to compile support for gps devices into the kernel 
+	  or say M to compile it as module.  
+endmenu
+
+

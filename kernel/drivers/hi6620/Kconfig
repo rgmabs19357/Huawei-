@@ -1,0 +1,6 @@
+
+menu "HI6620 support drivers"
+source "drivers/hi6620/g1dec/Kconfig"
+source "drivers/hi6620/8290enc/Kconfig"
+endmenu
+

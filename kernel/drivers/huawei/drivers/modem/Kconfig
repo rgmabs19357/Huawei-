@@ -1,0 +1,12 @@
+config MODEM_BOOT
+       bool "Modem boot control support"
+       default y
+       help
+         Modem boot control support
+
+config MODEM_BOOT_QSC6085
+        bool "qsc6085 boot control support"
+        depends on MODEM_BOOT
+        default y
+        help
+          Modem qsc6085 boot control support

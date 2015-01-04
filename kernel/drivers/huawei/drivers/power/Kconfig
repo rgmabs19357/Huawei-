@@ -1,0 +1,18 @@
+config BATTERY_BQ27510
+        tristate "BATTERY BQ27510"
+        depends on I2C_DESIGNWARE
+
+config CHARGER_BQ2419x
+        tristate "CHARGER BQ2419x"
+        depends on I2C_DESIGNWARE
+
+config BQ_BCI_BATTERY
+        tristate "BQ BCI BATTERY"
+        depends on BATTERY_BQ27510
+        depends on CHARGER_BQ2419x
+
+config BATTERY_HISI_SMARTSTAR
+        tristate "BATTERY HISI SMARTSTAR"
+
+config BATTERY_HISI_COUL
+        tristate "BATTERY HISI COUL"

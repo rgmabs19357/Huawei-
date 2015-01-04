@@ -1,0 +1,640 @@
+#####################################################################
+# Copyright (C) 2011 Huawei Tech. Co., Ltd.
+# obuild product define file
+#
+# Author : Jeffery.zhai/00199916, 2011-12-14
+#####################################################################
+# [version]:1.0
+CFG_BALONG_OBUILD_VERSION=10
+
+# [base_info]: name, version, build_type
+#####################################################################
+# NAME
+CFG_PRODUCT_CFG_CHIP_SOLUTION_BALONG         =YES
+CFG_PRODUCT_CFG_CHIP_SOLUTION_NAME           ="Balong"
+CFG_PRODUCT_NAME							 ="hi6620cs_oem_gutl_dsda"
+
+# VERSION
+CFG_BUILD_TYPE =RELEASE
+CFG_PRODUCT_VER =V700R001C00B155
+CFG_PRODUCT_CFG_VERSION_STR                  ="V900R100C50B070"
+CFG_PRODUCT_CFG_FULL_VERSION_STR             ="Balong V900R100C50B070"
+CFG_PRODUCT_CFG_FILE_VERSION_STR             ="2.1.5.5"
+CFG_PRODUCT_CFG_NV_VERSION_STR               ="1.2.1"
+CFG_PRODUCT_CFG_BOOTLOADER_VERSION_STR       ="1.0.0"
+CFG_PRODUCT_CFG_VERSION_V                    =900
+CFG_PRODUCT_CFG_VERSION_R                    =001
+CFG_PRODUCT_CFG_VERSION_C                    =00
+CFG_PRODUCT_CFG_VERSION_B                    =020
+
+CFG_PRODUCT_CFG_VERSION_RELEASE              =YES
+CFG_PRODUCT_CFG_ENABLE_SHELL_SYM   			 =YES
+
+CFG_PRODUCT_CONTROL_VERSION                 ="121"
+CFG_PRODUCT_HISILICON_VERSION               =hi6620
+CFG_PRODUCT_NV_SPLITFILE                    =/binfilesplit "1"
+CFG_PRODUCT_NV_FILE_MAX_SIZE		    =/binfileLimitSize "500"
+CFG_PRODUCT_NV_BIN_MODEM_NUNBER	            =/bin_modem_number "2"
+CFG_PRODUCT_NV_XNV_MODEM_NUNBER		    =/xnv_modem_number "2"
+CFG_PRODUCT_NV_XNV_PDT_VERSION              =hi6620_oem
+
+# define when Binary obj compare
+CFG_FEATURE_OBJ_CMP =NO
+CFG_FEATURE_OBJ_DUMP =NO
+
+# [pkg_info]: iso,dload, app.img
+#####################################################################
+# ISO and DLOAD software Name & Version
+CFG_FIRMWARE_DIR_NAME	    			 = IDT
+
+CFG_PRODUCT_CFG_ISO_NAME                 = "MOBILE_CONNECT"
+CFG_PRODUCT_CFG_ISO_VER                  = "UTPS21.005.18.00.03"
+
+CFG_PRODUCT_CFG_DLOAD_ID                 = "H69DUSAVA"
+CFG_PRODUCT_CFG_DLOAD_NAME               = "H69DUSAVA"
+CFG_PRODUCT_CFG_DLOAD_TOOL_VER           = "B311"
+CFG_PRODUCT_CFG_DLOAD_SOFTWARE_VER       = "21.120.00.00.00"
+CFG_PRODUCT_CFG_DLOAD_CFG		         = "Bin2App.cfg"
+CFG_PRODUCT_CFG_DLOAD_CFG_GZ		     = "Bin2App.gz.cfg"
+CFG_PRODUCT_CFG_DLOAD_PACK_BAT           = "BalongV9R1_download_images.xml"
+
+CFG_PRODUCT_CFG_HARDWARE_PCB_NAME        = "03020QXR"
+CFG_PRODUCT_CFG_HARDWARE_NAME_PRIVATE    = "MT1B390A"
+CFG_PRODUCT_CFG_HARDWARE_NAME     		= "Hi6620"
+
+
+# app.img dir Configuration : "em" or "sbm"
+CFG_PKG_APP_IMG			=NO
+CFG_APP_IMG_DIR		    =""
+CFG_DLOAD_PACK_FILELIST =MakeBalongV7R1_LV
+
+# bootrom usb merge tools
+CFG_USE_USBLOADER_MERGE				=YES
+CFG_USBLOADER_MERGE_BIN				=ramInit_256M_CS.bin
+
+# [chipset_info]:
+#####################################################################
+# CHIP_BB: 6920ES/6920CS
+CFG_CHIP_BB_6620CS = YES
+CFG_CHIP_BB = CHIP_BB_6620CS
+CFG_CHIP_BB_HI6620 = YES
+
+# CHIP_PMU:
+CFG_CHIP_PMU_6451ES0 = YES
+
+# CHIP_RFIC:AD9361R2/6360V200/6360V210/6361V100
+#CFG_CHIP_RFIC_6360V200 = YES
+ CFG_CHIP_RFIC_6361V100 = YES
+
+# BOARD:FPGA_P500/FPGA_P530/ASIC/ASIC_BIGPACK/SFT
+CFG_BOARD_ASIC = YES
+CFG_BOARD = ASIC
+
+CFG_PLATFORM_CHIP_TYPE = hi6620
+# FEATURE_MULTIMODE:LTE/TDS/GTL/GUL
+CFG_FEATURE_MULTIMODE_GUL = YES
+# CFG_FEATURE_MULTIMODE_GUL = no
+# TODO: del
+CFG_PRODUCT_CFG_MULTIMODE_GUL = YES
+# CFG_PRODUCT_CFG_MULTIMODE_GUL = no
+
+# LTE DSP LALG
+CFG_CHIPSET_PATH =platform/hi6620cs_asic
+# [os_info]
+####################################################################
+CFG_OS_LINUX_PRODUCT_NAME_HI6620OEM=hisi_hi6620oem_defconfig
+
+CFG_OS_ANDROID_PRODUCT_NAME=v9r1bbit
+CFG_PRODUCT_CFG_VXWORKS_PRJ=prj_ccore_vxworks_interpeak
+# [nv_info]
+####################################################################
+CFG_GU_NV_PATH =config/nvim/data/gu/bin_dsda
+CFG_GU_NV_XML_FLAG = YES
+CFG_GU_NV_XML_PATH =config/nvim/data/gu/hi6620
+CFG_GU_XNV_PATH    =config/nvim/data/gu/v9r1/oem
+CFG_LNV_PRO_NAME =hi6620cs_oem_gutl_dsda
+
+# [lphy_config_info]
+####################################################################
+CFG_XTENSA_CORE=V9R1_bbe16
+
+# [gu_platform]
+####################################################################
+#未修改
+#CFG_GU_INC_PATH =COMM_CODE_GU/Balong_GU_Inc/GUL_CS
+#CFG_GU_INC_PATH =COMM_CODE_GU/Balong_GU_Inc/GUL_CS
+#CFG_GU_PRODUCT_VERSION =VERSION_V7R1
+CFG_GU_PRODUCT_VERSION =VERSION_V9R1
+PRODUCT_CFG_PRODUCT_VERSION=VERSION_V9R1
+CFG_RAT_GU=0
+CFG_RAT_GUL=1
+CFG_VERSION_V9R1=1
+CFG_RAT_MODE =RAT_GUL
+#CFG_RAT_MODE =RAT_GU
+CFG_PLATFORM_HISI_BALONG =hi6620cs_asic
+CFG_TTF_SKB_EXP = NO
+
+# [gu_feature_config]
+####################################################################
+CFG_GU_FEATURE_CONFIG_PATH =config/product/include/hi6620cs_oem_gutl_dsda
+
+# [gudsp_config_info]
+####################################################################
+# gu hifi dir
+CFG_HIFI_INCLUDE                        = YES
+CFG_HIFI_LINK_DIR_NAME			=hifi_ld_V9R1_SFT
+# gu zsp ld file
+#CFG_ZSP_LINK_FILE_NAME			=ZSP_V7R1.ld
+# gu zsp 定义芯片型号：为0表示HI6920ES，为1表示HI6756CS，为2表示HI6920CS，为3表示HI6758CS，为4表示HI6620CS，为5表示其他
+CFG_ZSP_DSP_CHIP_BB_TYPE		=4
+# gu zsp 定义产品形态：为0表示Stick，为1表示E5，为2表示Phone，为3表示E353，为4表示UDP
+CFG_ZSP_DSP_PRODUCT_FORM		=1
+
+# [bsp_comm_feature_info]:
+#####################################################################
+# TODO:del
+CFG_FEATURE_BOARD_STUB_BJ_E5776S = NO
+CFG_FEATURE_BOARD_STUB_BJ_UDP = YES
+
+# ASIC_DIR: v7r1/v7r1_pilot/pv500    TODO: macros need to be cleaned.
+CFG_BSP_ASIC_DIR_NAME=v7r1
+
+# TODO:what ? NO会导致连接不通过
+CFG_PRODUCT_CFG_ENABLE_BUILD_VARS=YES
+# TODO:需要删除 bsp acore在使用
+CFG_PRODUCT_CFG_PRODUCT_TYPE_HI6920CS_UDP=YES
+
+# 编译acore WIFI ko
+CFG_FEATURE_WIFI_ON = NO
+
+# component enable
+CFG_FEATURE_NCM_ON = YES
+CFG_FEATURE_ECM_OFF = YES
+
+CFG_FEATURE_BSP_SOFTTIMER			= YES
+CFG_FEATURE_BSP_I2C					= YES
+CFG_FEATURE_BSP_EFUSE				= YES
+CFG_FEATURE_BSP_PWRCTRL				= YES
+CFG_FEATURE_BSP_HKADC				= YES
+CFG_FEATURE_BSP_SSDMA				= NO
+CFG_FEATURE_BSP_POWER_DRX			= NO
+CFG_FEATURE_BSP_LCD					= YES
+CFG_FEATURE_BSP_CHG					= YES
+CFG_FEATURE_BSP_SHELL				= YES
+CFG_FEATURE_BSP_LANSWITCH			= YES
+CFG_FEATURE_BSP_WM8990				= YES
+CFG_FEATURE_BSP_HIFI				= YES
+
+#enalbe TDS Init
+CFG_FEATURE_BSP_TDS                             = YES
+
+#TDS phy bin
+CFG_TDS_PHY_COMPONENTS              = tds_dsp_ddr_data.bin tds_tensilica_app.bin
+
+# enable mcore vxworks link symbol table
+CFG_ENABLE_SHELL_SYM				=YES
+# mcore link components
+CFG_MCORE_COMPONENTS			=bsp_ccore.o gumsp_mcore.o nas_ccore.o rabm_ccore.o gas_ccore.o was_ccore.o ttf_ccore.o ascomm_ccore.o pscomm_ccore.o taf_ccore.o lps_NAS_mcore.o lps_AS_mcore.o lmsp_mcore.o gudsp_mcore.o gudsp_comm_RT.o gudsp_mcore_RT.o  modemcore1_union.o os_ccore.o hw_sdk.o
+# ccore modem1 link components
+CFG_CCORE_MODEM1_COMPONENTS		=bsp_ccore1.o nas1_ccore.o rabm1_ccore.o gas1_ccore.o taf1_ccore.o ascomm1_ccore.o pscomm1_ccore.o gumsp1_mcore.o gudsp1_mcore.o gudsp1_mcore_RT.o ttf1_ccore.o
+# vxworks link components
+CFG_VXWORKS_COMPONENTS			=bsp_vxworks.o bsp_vxworks1.o os_vxworks.o
+CFG_VXWORKS_MODEM1_COMPONENTS		=bsp_dsda.o
+# ccore link ld script
+CFG_CCORE_LINK_LD_SCRIPT		=ld_vxworks6.8_link_gcc_sram_400k.ld
+
+# MultiCore : VXWORKS; VXWORKS; BOOTROM; BOOTLOADER
+ENV_PRODUCT_CFG_CORE_TYPE_MODEM          = YES; NO; YES; NO
+ENV_PRODUCT_CFG_OS_TYPE_LINUX            = NO; YES; NO; NO
+ENV_PRODUCT_CFG_OS_TYPE_VXWORKS          = YES; NO; YES; NO
+ENV_PRODUCT_CFG_IMAGE_TYPE_VXWORKS       = YES; NO; NO; NO
+ENV_PRODUCT_CFG_IMAGE_TYPE_linux         = NO; YES; NO; NO
+ENV_PRODUCT_CFG_IMAGE_NAME               = "VXWORKS"; "linux"; "BOOTROM"; "BOOTLOADER"
+ENV_PRODUCT_CFG_BUILD_SEPARATE           = NO;  NO;  NO;  NO
+CFG_PRODUCT_CFG_BUILD_SEPARATE					= NO
+# Ethernet IO : mcore,acore,bootrom,bootloader
+# base: GMII + GMAC
+# switch: base + LANSWITCH
+ENV_PRODUCT_CFG_ETH_PHY_GMII             = YES; NO;  NO;  NO
+ENV_PRODUCT_CFG_DEV_USE_GMAC             = YES; NO;  NO;  NO
+ENV_PRODUCT_CFG_DEV_USE_LANSWITCH        =  YES; NO;  NO;  NO
+
+# SDIO : mcore,acore,bootrom,bootloader
+ENV_PRODUCT_CFG_DEV_USE_SDIO             = NO;  YES; NO;  NO
+
+# USB IO :mcore,acore,bootrom,bootloader
+# base: JUSB
+# virtual serial port supported: base + ACM
+# virtual ethernet port supported: base + NCM
+# mass storage supported: base + MASS
+ENV_PRODUCT_CFG_DEV_USE_JUSB             = NO;  YES; YES; NO
+ENV_PRODUCT_CFG_DEV_USE_ACM              = NO;  YES; YES; NO
+ENV_PRODUCT_CFG_DEV_USE_NCM              = NO;  YES;  NO; NO
+ENV_PRODUCT_CFG_DEV_USE_MASS             = NO;  YES;  NO; NO
+
+# DRX Configuration :mcore,acore,bootrom,bootloader
+ENV_PRODUCT_CFG_DEV_USE_DRX              = YES; NO;  NO;  NO
+
+# TEST Code Configuration :mcore,acore,bootrom,bootloader
+ENV_PRODUCT_CFG_ENABLE_TEST_CODE         = NO;  NO;  NO;  NO
+CFG_PRODUCT_CFG_ENABLE_TEST_CODE				= NO
+
+# 过渡版本开关
+CFG_PTABLE_TRANSITION	=NO
+
+# Ptable transition version Configuration:mcore,acore,bootrom,bootloader
+ENV_PRODUCT_CFG_PTABLE_TRANSITION        = NO;  NO;  NO;  NO
+CFG_PRODUCT_CFG_PTABLE_STUB_DLOAD_ID     = "H69DUSAVA"
+CFG_PRODUCT_CFG_PTABLE_STUB_DLOAD_NAME   = "H69DUSAVA"
+CFG_PRODUCT_CFG_PTABLE_STUB_DLOAD_VER    = "71.080.10.00.00"
+
+# ccore memory
+CFG_PRODUCT_CFG_MCORE_RAM_LOW_ADDR       = 0x00004000
+CFG_PRODUCT_CFG_MCORE_RAM_HIGH_ADDR 	 = 0x04FFA000
+
+# [bsp.custom]
+#######################################################################
+ENV_PRODUCT_CFG_DEV_USE_DDR1           = NO ;  NO ;  NO ;  YES
+ENV_PRODUCT_CFG_DEV_USE_ABBIN          = YES;  NO ;  NO ;  NO
+ENV_VERSION_E5_HW_TEST   = NO;  NO;  NO;  NO
+
+# THUMB 指令编译开关
+CFG_THUMB_COMPILE = YES
+
+#####################################################################
+# GU COMMON FEATURE CONFIG                                          #
+#####################################################################
+# 开关特性变量
+CFG_FEATURE_ON                                  = 1
+CFG_FEATURE_OFF                                 = 0
+
+CFG_MEMORY_SIZE_32M                             = 1
+CFG_MEMORY_SIZE_64M                             = 2
+CFG_MEMORY_SIZE_128M                            = 3
+CFG_MEMORY_SIZE_256M                            = 4
+CFG_MEMORY_SIZE_512M                            = 5
+# 协议栈版本
+CFG_PS_PTL_VER_DANAMIC                          = 20
+
+CFG_PS_PTL_VER_PRE_R99                          = (-2)
+CFG_PS_PTL_VER_R99                              = (-1)
+CFG_PS_PTL_VER_R3                               = 0
+CFG_PS_PTL_VER_R4                               = 1
+CFG_PS_PTL_VER_R5                               = 2
+CFG_PS_PTL_VER_R6                               = 3
+CFG_PS_PTL_VER_R7                               = 4
+CFG_PS_PTL_VER_R8                               = 5
+CFG_PS_PTL_VER_R9                               = 6
+CFG_PS_UE_REL_VER                               = PS_PTL_VER_R9
+
+# GSM 通信接入技术模式
+CFG_FEATURE_UE_MODE_G                           = FEATURE_ON
+
+# WCDMA 通信接入技术模式
+CFG_FEATURE_UE_MODE_W                           = FEATURE_ON
+
+# G小区广播
+CFG_FEATURE_GCBS                                = FEATURE_ON
+
+# W小区广播
+CFG_FEATURE_WCBS                                = FEATURE_ON
+
+# 支持AP
+CFG_FEATURE_AP                                  = FEATURE_OFF
+
+# 支持 PTABLE UDP
+CFG_FEATURE_PTABLE_UDP                          = FEATURE_ON
+
+# 支持STICK
+CFG_FEATURE_STICK                               = FEATURE_OFF
+
+# 支持E5
+CFG_FEATURE_E5                                  = FEATURE_OFF
+
+# 支持E5_UDP
+CFG_FEATURE_E5_UDP                              = FEATURE_OFF
+
+# Lighting Card
+CFG_FEATURE_HILINK                              = FEATURE_OFF
+
+# Security Boot
+CFG_FEATURE_SEC_BOOT                            = FEATURE_OFF
+
+# 是否支持多模
+
+CFG_FEATURE_LTE                                 = FEATURE_ON
+
+CFG_FEATURE_CSD                                 = FEATURE_OFF
+
+CFG_FEATURE_IPV6                                = FEATURE_ON
+CFG_FEATURE_PPP                                 = FEATURE_OFF
+
+
+# Update OnLine
+CFG_FEATURE_UPDATEONLINE                        = FEATURE_OFF
+
+# wifi
+CFG_FEATURE_WIFI                                = FEATURE_OFF
+
+#hifi
+CFG_FEATURE_HIFI                                = FEATURE_OFF
+
+# sdio
+CFG_FEATURE_SDIO                                = FEATURE_OFF
+
+# keyboard
+CFG_FEATURE_KEYBOARD                            = FEATURE_OFF
+
+#charge
+CFG_FEATURE_CHARGE                              = FEATURE_OFF
+
+#ICC可维可测测试打桩
+CFG_FEATURE_ICC_DEBUG                           = FEATURE_ON
+
+#power_on_off
+CFG_FEATURE_POWER_ON_OFF                        = FEATURE_OFF
+
+#OLED
+CFG_FEATURE_OLED                                = FEATURE_OFF
+
+#TFT
+CFG_FEATURE_TFT                                 = FEATURE_OFF
+
+#MMI_TEST
+CFG_FEATURE_MMI_TEST                            = FEATURE_OFF
+# DL E CELL FACH
+CFG_FEATURE_DL_E_CELL_FACH                      = FEATURE_ON
+
+CFG_FEATURE_DC_MIMO                             = FEATURE_OFF
+
+#harq 外移
+CFG_FEATURE_HARQ_OUT                            = FEATURE_OFF
+
+#ipwebs_feature_e5
+CFG_IPWEBS_FEATURE_E5                           = FEATURE_OFF
+
+#ipwebs_feature_wireless_dongle
+CFG_IPWEBS_FEATURE_WIRELESS_DONGLE              = FEATURE_OFF
+
+#ipwebs_feature_lightning_card
+CFG_IPWEBS_FEATURE_LIGHTNING_CARD               = FEATURE_OFF
+
+#feature_webnas
+CFG_FEATURE_WEBNAS                              = FEATURE_OFF
+
+# Disable Autorun
+#CFG_FEATURE_AUTORUN_HL_1_1                      = FEATURE_OFF
+
+# E355
+CFG_FEATURE_WIRELESS_DONGLE                     = FEATURE_OFF
+
+# PMU current overflow and high-temperature protection
+CFG_FEATURE_PMU_PROTECT                         = FEATURE_OFF
+
+#memory size
+CFG_FEATURE_MEMORY_SIZE                         = MEMORY_SIZE_64M
+
+CFG_FEATURE_ECM_RNDIS                           = FEATURE_OFF
+
+CFG_FEATURE_RNIC                                = FEATURE_OFF
+
+CFG_FEATURE_NFEXT                               = FEATURE_ON
+
+CFG_FEATURE_UL_E_CELL_FACH                      = FEATURE_OFF
+
+CFG_FEATURE_DC_UPA                              = FEATURE_OFF
+#E5 呼吸灯
+CFG_FEATURE_BREATH_LIGHT                        = FEATURE_OFF
+
+# 三色灯使能开关
+CFG_FEATURE_LEDSTATUS                           = FEATURE_OFF
+
+#E5 LED
+CFG_FEATURE_E5_LED                              = FEATURE_OFF
+
+#RTC特性开关
+CFG_FEATURE_RTC                                 = FEATURE_OFF
+
+# BBP小邮箱: 此特性开启后, WTTF会将BBP邮箱中的数据拷贝到TTF MEM, 从而减小BBP邮箱规格, 达到裁剪内存的目的
+CFG_FEATURE_SMALL_MAILBOX                       = FEATURE_OFF
+
+# 低功耗分区上下电临时开关
+CFG_FEATURE_TEMP_DSP_CORE_POWER_DOWN            = FEATURE_OFF
+CFG_FEATURE_RECONFIG                            = FEATURE_ON
+
+# 硬加密版本改制特性宏，E5 上打开，stick 等版本关闭。参见 matao00151948 的邮件
+CFG_FEATURE_HWENCRY_REWORK                      = FEATURE_OFF
+
+# 内存池管理单元
+CFG_FEATURE_MMU_BIG                             = FEATURE_OFF
+
+CFG_FEATURE_MMU_MEDIUM                          = FEATURE_ON
+
+CFG_FEATURE_MMU_SMALL                           = FEATURE_OFF
+
+CFG_FEATURE_TTFMEM_CACHE                        = FEATURE_OFF
+
+CFG_FEATURE_SDUPDATE                            = FEATURE_OFF
+
+CFG_FEATURE_SECURITY_SHELL                      = FEATURE_ON
+
+CFG_FEATURE_EPAD                                = FEATURE_OFF
+
+CFG_FEATURE_HSIC_SLAVE                          = FEATURE_OFF
+
+# 烧片版本打开LOG
+CFG_FEATURE_MANUFACTURE_LOG                     = FEATURE_OFF
+
+CFG_FEATURE_MEM_MONITOR                         = FEATURE_ON
+
+
+CFG_FEATURE_TEMP_MULTI_MODE_LP                  = FEATURE_ON
+
+CFG_FEATURE_DRV_REPLAY_DUMP                     = FEATURE_OFF
+
+CFG_FEATURE_POWER_DRV                           = FEATURE_ON
+
+CFG_FEATURE_SIM_NOTIFY                          = FEATURE_OFF
+
+CFG_FEATURE_HW_CODEC                            = FEATURE_ON
+
+# SKB是否为扩展结构开关
+CFG_FEATURE_SKB_EXP                             = FEATURE_OFF
+
+# 多文件系统分区
+CFG_FEATURE_MULTI_FS_PARTITION                  = FEATURE_ON
+
+CFG_FEATURE_MULTI_MODEM                         = FEATURE_ON
+
+CFG_FEATURE_VCOM_EXT                            = FEATURE_ON
+
+# socp通道裁剪
+CFG_FEATURE_SOCP_CHANNEL_REDUCE                 = FEATURE_OFF
+
+#单SKU支持多运营商
+CFG_FEATURE_S_SKU_M_OPERATORS                   = FEATURE_OFF
+
+#FileBrowser访问NV文件IMEI保护
+CFG_FEATURE_BROWSER_NV_FILE_IMEI_PROTECT        = FEATURE_OFF
+
+#可维可测Log压缩写文件
+CFG_FEATURE_COMPRESS_WRITE_LOG_FILE             = FEATURE_OFF
+
+#V9R1支持CBT抓取LOG
+CFG_FEATURE_CBT_LOG                             = FEATURE_ON
+
+CFG_FEATURE_POWER_TIMER                         = FEATURE_ON
+
+CFG_FEATURE_UE_MODE_TDS                         = FEATURE_ON
+
+# ETWS功能开关
+CFG_FEATURE_ETWS                                = FEATURE_ON
+
+CFG_FEATURE_AGPS                                = FEATURE_ON
+
+CFG_FEATRUE_XML_PARSER                          = FEATURE_ON
+
+CFG_FEATURE_RNDIS				= FEATURE_OFF
+
+#商用ERROR LOG开关
+CFG_FEATURE_PTM                                 = FEATURE_ON
+
+CFG_CONFIG_HISI_PTM                             = FEATURE_ON
+
+# 虚拟卡特性开关
+CFG_FEATURE_VSIM                                = FEATURE_ON
+
+# A/C核解耦
+CFG_FEATURE_DELAY_MODEM_INIT                    = FEATURE_ON
+
+#####################################################################
+# GU NAS FEATURE CONFIG                                             #
+#####################################################################
+#表明NVIM中是否能保存短信
+CFG_NAS_FEATURE_SMS_NVIM_SMSEXIST                       = FEATURE_ON
+CFG_NAS_FEATURE_SMS_FLASH_SMSEXIST                      = FEATURE_ON
+
+#表里AT通道中是否打开HSIC通道
+CFG_FEATURE_AT_HSIC                                     = FEATURE_ON
+
+#HSUART 端口是否可用
+CFG_FEATURE_AT_HSUART					= FEATURE_OFF
+
+#####################################################################
+# GU GAS FEATURE CONFIG                                             #
+#####################################################################
+# GAS协议版本定义
+CFG_GAS_PTL_VER_PRE_R99             = (PS_PTL_VER_PRE_R99)
+CFG_GAS_PTL_VER_R99                 = (PS_PTL_VER_R99)
+CFG_GAS_PTL_VER_R3                  = (PS_PTL_VER_R3)
+CFG_GAS_PTL_VER_R4                  = (PS_PTL_VER_R4)
+CFG_GAS_PTL_VER_R5                  = (PS_PTL_VER_R5)
+CFG_GAS_PTL_VER_R6                  = (PS_PTL_VER_R6)
+CFG_GAS_PTL_VER_R7                  = (PS_PTL_VER_R7)
+CFG_GAS_PTL_VER_R8                  = (PS_PTL_VER_R8)
+CFG_GAS_PTL_VER_R9                  = (PS_PTL_VER_R9)
+
+# GAS当前版本
+CFG_GAS_UE_REL_VER                  = (GAS_PTL_VER_R9)
+
+#####################################################################
+# GU WAS FEATURE CONFIG                                             #
+#####################################################################
+
+
+
+#####################################################################
+# GU TTF FEATURE CONFIG                                             #
+#####################################################################
+CFG_FEATURE_BBP_MASTER                          = FEATURE_ON
+
+CFG_FEATURE_BBPMST_FREQUENCY_REDUCE             = FEATURE_OFF
+
+# 压缩开关
+CFG_TTF_CF_FEATURE                              = FEATURE_OFF
+
+# TTF内存调试开关
+# 目前打开开关以主要检查内存泄漏, 稳定后可以关闭
+CFG_FEATURE_TTF_MEM_DEBUG                       = FEATURE_ON
+
+# TCP-ACK前移
+CFG_FEATURE_TCP_ACK_IN_FRONT                    = FEATURE_ON
+
+CFG_FEATURE_CST_ASYN_OR_NOT_TRANS               = FEATURE_OFF
+
+CFG_FEATURE_EDMAC                               = FEATURE_OFF
+
+# ACPU 负载统计
+CFG_FEATURE_ACPU_STAT                           = FEATURE_OFF
+
+# 流控模块在AP上的流控点注册
+CFG_FEATURE_ACPU_FC_POINT_REG                   = FEATURE_OFF
+
+# 加密系统控制器
+CFG_SC_CTRL_MOD_6620_FPGA                       = 1
+CFG_SC_CTRL_MOD_6620_SFT                        = 2
+CFG_SC_CTRL_MOD_6758_FPGA                       = 3
+CFG_SC_CTRL_MOD_6758_SFT                        = 4
+CFG_SC_CTRL_MOD_6930_FPGA                       = 5
+CFG_SC_CTRL_MOD_6930_SFT                        = 6
+CFG_SC_CTRL_MOD_3630_UDP                        = 7
+
+CFG_SC_CTRL_MOD                                 =(SC_CTRL_MOD_6620_SFT)
+
+# sample contrl for V7 only
+CFG_FEATURE_SAMPLE_V7_ONLY                      = FEATURE_OFF
+
+# bsp mntn in lte channel(hso)
+FEATURE_BSP_LCH_OM                              = FEATURE_OFF
+
+#####################################################################
+# GU PHY FEATURE CONFIG                                             #
+#####################################################################
+CFG_FEATURE_DC_DPA							    = FEATURE_ON
+CFG_FEATURE_RFIC_RESET_GPIO_ON			= FEATURE_ON
+CFG_FEATURE_EXTERNAL_32K_CLK			= FEATURE_ON
+CFG_FEATURE_UPHY_SIO_WPLL_ELUSION_ON		= FEATURE_OFF
+
+# 是否支持tuner
+CFG_FEATURE_TUNER				= FEATURE_ON
+
+#####################################################################
+# GU DRV FEATURE CONFIG                                             #
+#####################################################################
+# IPF硬件配置
+CFG_IPF_V200                                     = 1
+CFG_IPF_V300                                     = 2
+CFG_FEATURE_IPF_VERSION                          = IPF_V200
+CFG_FEATURE_IPF_BF_NUM                           = 64
+CFG_FEATURE_HANDSET_SECURITY_BOOT	     = FEATURE_OFF
+CFG_FEATURE_PHONE     			     = FEATURE_OFF
+CFG_FEATURE_PHOTOFRAME			     = FEATURE_OFF
+
+# DSP加载
+CFG_FEATURE_DSP_LOAD			     = FEATURE_OFF
+#####################################################################
+# GU CODEC FEATURE CONFIG                                           #
+#####################################################################
+
+# 语音软件上移ARM配置
+CFG_FEATURE_VOICE_UP                         = FEATURE_OFF
+
+CFG_FEATURE_PMU_SMARTSTAR                    = FEATURE_ON
+# V9R1性能提升，代码段放入SRAM控制宏
+CFG_FEATURE_SRAM_400K                           = FEATURE_ON
+
+#V7R2GUL联调成果上库
+CFG_FEATURE_MULTI_RFIC_MEAS			= FEATURE_OFF
+
+#只在V9R1产品板上打开L分集和G副卡共天线
+CFG_FEATURE_ANT_SHARE				= FEATURE_ON
+
+#VoLTE特性开关
+CFG_FEATURE_IMS                              = FEATURE_ON
+#SVLTE 共天线特性开关
+CFG_FEATURE_DSDS                             = FEATURE_ON
+
+#####################################################################
+# K3V3 FEATURE CONFIG                                              #
+#####################################################################
+CFG_FEATURE_SOCP_ON_DEMAND			= FEATURE_OFF

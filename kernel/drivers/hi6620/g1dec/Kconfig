@@ -1,0 +1,20 @@
+menu "g1 decode support"
+
+config G1_DEC
+    tristate "Support for hisi k3 video dec processor"
+    help
+        The decode device provides decode function for H.264/MPEG4/VC1
+
+config G1_DEC_CLK
+    int "G1 Decode Clock Frequence"
+    default "200000000"
+    help
+        Set default g1 decode clock frequence
+
+config G1_DEC_WAIT_TIMEOUT_COEFF
+    int "G1 decode wait timeout coefficient"
+    default "1"
+    help
+        Set default g1 decode wait timeout coefficient
+
+endmenu

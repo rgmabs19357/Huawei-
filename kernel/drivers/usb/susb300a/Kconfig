@@ -1,0 +1,11 @@
+#
+# USB Dual Role (OTG-ready) Controller Drivers
+# based on Synopsys designs
+#
+config USB_SUSB_300A
+	depends on (USB || USB_GADGET)
+	tristate 'Synopsys Highspeed Dual Role Controller '
+	help
+	  Say Y here if your system has a dual role high speed USB
+	  controller based on the Synopsys OTG IP.
+

@@ -1,0 +1,100 @@
+##############################################################################
+#
+#    Copyright (c) 2005 - 2013 by Vivante Corp.  All rights reserved.
+#
+#    The material in this file is confidential and contains trade secrets
+#    of Vivante Corporation. This is proprietary information owned by
+#    Vivante Corporation. No part of this work may be disclosed,
+#    reproduced, copied, transmitted, or used in any way for any purpose,
+#    without the express written permission of Vivante Corporation.
+#
+##############################################################################
+
+
+#
+# Linux build file for user HAL layer.
+#
+
+################################################################################
+# Include common definitions.
+
+include $(AQROOT)/makefile.linux.def
+
+################################################################################
+# Define a shortcut for the main target.
+
+STATIC = 1
+TARGET_NAME = libhalosuser.a
+
+################################################################################
+# Supply additional include directories.
+
+INCLUDE += -I$(AQROOT)/hal/inc
+INCLUDE += -I$(AQROOT)/hal/user
+INCLUDE += -I$(AQROOT)/hal/optimizer
+INCLUDE += -I$(AQROOT)/hal/os/linux/user
+
+ifeq ($(EGL_API_WL), 1)
+    INCLUDE += -I$(WAYLAND_DIR)/include
+    INCLUDE += -I$(WAYLAND_DIR)/include/wayland-viv
+endif
+
+ifeq ($(EGL_API_DFB), 1)
+    INCLUDE += -I$(DFB_DIR)/usr/include
+    INCLUDE += -I$(DFB_DIR)/include
+    INCLUDE += -I$(DFB_DIR)/include/directfb-internal
+    INCLUDE += -I$(DFB_DIR)/include/directfb
+    LIBS    += -L$(DFB_DIR)/lib -ldirectfb -ldirect -lz
+endif
+
+ifeq ($(EGL_API_DRI), 1)
+    INCLUDE += -I$(X11_ARM_DIR)/include -I$(AQROOT)/driver/X/DRI/src
+    LIBS += -L$(X11_ARM_DIR)/lib -lXdamage -lXfixes -lXext -lX11
+endif
+
+CFLAGS += $(INCLUDE)
+
+ifneq ($(USE_ARMCC), 1)
+ifeq ($(EGL_API_WL), 1)
+CFLAGS += -fPIC -Werror
+else
+ifeq ($(EGL_API_DRI), 1)
+	ifeq ($(CPU_TYPE), 0)
+		CFLAGS += -fPIC -Werror
+	else
+		CFLAGS += -fPIC -Werror -march=armv7-a
+	endif
+else
+ifeq ($(EGL_API_DFB), 1)
+CFLAGS  += -pipe -fPIC
+else
+CFLAGS += -fPIC -Werror -ansi
+endif
+endif
+endif
+endif
+
+ifeq ($(EGL_API_DFB), 1)
+CFLAGS  += -D_GNU_SOURCE -DPIC
+endif
+
+################################################################################
+# Describe object files.
+
+OBJECTS = $(OBJ_DIR)/gc_hal_user_debug.o \
+          $(OBJ_DIR)/gc_hal_user_os.o \
+          $(OBJ_DIR)/gc_hal_user_math.o
+
+
+ifeq ($(EGL_API_DRI),1)
+$(OBJ_DIR)/%.o: ../../../../driver/X/DRI/src/%.c
+	$(CC) -c $(CFLAGS) $(INCLUDE) -o $@ $<
+endif
+
+################################################################################
+# Installation directory
+ifeq ($(gcdSTATIC_LINK), 1)
+INSTALL_DIR = $(SDK_DIR)/drivers
+endif
+
+include $(AQROOT)/common.target

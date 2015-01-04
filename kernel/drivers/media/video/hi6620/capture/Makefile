@@ -1,0 +1,42 @@
+#
+# Makefile for hisilicon K3 soc camera v4l2 driver
+#
+subdir-ccflags-y += -Idrivers/huawei/drivers/camera/mini_isp/
+EXTRA_CFLAGS += -Idrivers/media/video/hi6620/capture/isp
+EXTRA_CFLAGS += -Idrivers/media/video/hi6620/capture/isp_for_misp
+EXTRA_CFLAGS += -Idrviers/huawei/drivers/camera/mini_isp
+#EXTRA_CFLAGS += -Idrviers/huawei/drivers/camera/miniISP/include
+EXTRA_CFLAGS += -Idrivers/huawei/drivers/camera/miniISP/camera
+EXTRA_CFLAGS += -Idrivers/media/video/hi6620/capture/common
+EXTRA_CFLAGS += -fno-pic
+
+k3_capture-objs := isp/cam_util.o \
+		   isp/cam_dbg.o \
+		   isp/k3_v4l2_capture.o \
+		   isp/k3_isp.o \
+		   isp/k3_isp_io.o \
+		   isp/k3_ispv1.o \
+		   isp/k3_ispv1_afae.o \
+		   isp/k3_ispv1_tune_ops.o \
+		   isp/k3_ispv1_io.o \
+		   isp/sensor_common.o \
+		   isp/hwa_cam_tune.o \
+		   isp/hw_soft_3a.o \
+		   isp/hdr_movie.o \
+		   isp_for_misp/mini_cam_util.o \
+		   isp_for_misp/mini_cam_dbg.o \
+		   isp_for_misp/mini_k3_v4l2_capture.o \
+		   isp_for_misp/mini_k3_isp.o \
+		   isp_for_misp/mini_k3_isp_io.o \
+		   isp_for_misp/mini_k3_ispv1.o \
+		   isp_for_misp/mini_k3_ispv1_afae.o \
+		   isp_for_misp/mini_k3_ispv1_tune_ops.o \
+		   isp_for_misp/mini_k3_ispv1_io.o \
+		   isp_for_misp/mini_sensor_common.o \
+		   isp_for_misp/mini_hwa_cam_tune.o \
+		   isp_for_misp/mini_hw_soft_3a.o \
+		   isp_module_init.o
+		   
+
+obj-$(CONFIG_VIDEO_HI6620_CAMERA) += k3_capture.o
+#obj-m += k3_capture.o

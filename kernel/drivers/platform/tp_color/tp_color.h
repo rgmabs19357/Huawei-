@@ -1,0 +1,1 @@
+extern unsigned char get_tp_color(void);

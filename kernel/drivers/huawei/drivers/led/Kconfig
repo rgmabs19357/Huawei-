@@ -1,0 +1,15 @@
+
+
+
+
+config LEDS_K3_6421
+	bool "LEDS_K3_6421 Trigger"
+	depends on LEDS_TRIGGERS && LEDS_TRIGGER_TIMER
+	default n
+	help
+	  This allows LEDs to be controlled by K3 leds activity.
+	  If unsure, say n.
+
+
+
+

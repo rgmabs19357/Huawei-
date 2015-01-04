@@ -1,0 +1,170 @@
+#include "nv_struct_datatype_def.txt"
+
+
+typedef struct tagUSB_NV_NEW_PID_INFO_T
+{
+    U32_T u32USBNewPidSupp;   /* 1: 使能USB新PID方案; 0: 禁止USB新PID方案/
+} USB_NV_NEW_PID_INFO_T;
+
+typedef struct tagUSB_NV_PID_UNION_T
+{
+    U32_T u32USBNvState;   /* 1: 该NV项有效; 0: 该NV项无效 */
+    U32_T u32USBProtOfs;   /* 新PID方案的PID值偏移基址 */
+    U32_T u32USBCdromPid;   /* 设备切换前端口形态PID值 */
+    U32_T u32USBUniquePid;   /* 设备切换后端口形态PID值 */
+} USB_NV_PID_UNION_T;
+
+typedef struct tagUSB_NV_DEV_PROFILE_T
+{
+    U32_T u32USBNvState;   /* 1: 该NV项有效; 0: 该NV项无效 */
+    U8_T  u8USBFirstPortSeq[17];   /* 设备切换前端口形态 */
+    U8_T   u8USBMultiPortSeq[17];   /* 设备切换后端口形态 */
+    U8_T   u8USBPortReserved[2];   /* 字节填充 */
+} USB_NV_DEV_PROFILE_T;
+
+typedef struct tagUSB_NV_SERIAL_NUM_T
+{
+    U32_T    u32USBSerialNumSupp; /* 1: 上报固定序列号; 0: 不上报固定序列号 */
+    U32_T    u32Reserved; /* 保留字 */
+} USB_NV_SERIAL_NUM_T;
+
+typedef struct tagNETIF_INIT_PARM_T
+{
+    U32_T    u32CalcTime;        /* 计算时间周期(10ms) */
+    U32_T    u32PktNum;          /* 累计包个数 */
+    U32_T    u32SwichFlag;       /* netif包上送适配开关 */
+} NETIF_INIT_PARM_T;
+
+typedef struct 
+{
+    U32_T    loop : 1;    /*0 死循环检测开关*/
+    U32_T    ARMexc : 1;  /*1 ARM异常检测开关*/
+    U32_T    OSexc : 1;   /*2 OS异常检测开关*/
+    U32_T    stackFlow : 1; /*3 堆栈溢出检测开关*/
+    U32_T    taskSwitchSave : 1; /*4 任务切换记录开关*/
+    U32_T    intSave : 1;        /*5 中断记录开关*/
+    U32_T    force : 1;          /*6 强制记录开关，暂未使用*/
+    U32_T    sciRecord : 1;      /*7 SIM TRACE记录开关*/
+    U32_T    usbRecord : 1;      /*8 usb Trace记录开关 */
+    U32_T    reserved1 : 22; 
+    U32_T    sysErrReboot : 1;   /*31 systemError复位开关*/
+}BITS_STRU;
+
+typedef union 
+{
+    U32_T  uintValue;
+    BITS_STRU stBits;
+} EXCH_CFG_UNION;    
+
+typedef struct
+{
+    EXCH_CFG_UNION   exchCfg;   /* 获得单板系统运行时间 */
+}EXCH_CFG_UNION_STRU;
+typedef struct
+{
+    U32_T   exchSwitch;  /*异常处理开关，1为开，0为关*/
+    EXCH_CFG_UNION_STRU exchCfgstr;
+    U32_T    WdtSwitch; 
+    U32_T   wdtTimerOut;              /*看门狗超时时间，单位ms*/
+}EH_NV;
+
+typedef struct
+{
+    U32_T   nvSysTimeValue;   /* 获得单板系统运行时间 */
+}SYS_TIME;
+
+typedef struct _tagVerForSecFlag
+{
+    U32_T  bIsReleaseVer;
+} VerForSecFlag;
+typedef struct ST_PWC_SWITCH_STRU_S
+{
+    U32_T deepsleep  :1; /*bit0*/
+    U32_T lightsleep :1; /*bit1*/
+    U32_T dfs        :1; /*bit2*/
+    U32_T hifi       :1; /*bit3*/
+
+    U32_T drxAbb     :1; /*bit4*/
+    U32_T drxZspCore :1; /*bit5*/
+    U32_T drxZspPll  :1; /*bit6*/
+    U32_T drxWLBbpPll  :1; /*bit7*/
+    U32_T drxGBbpPll   :1; /*bit8*/
+    U32_T drxRf      :1; /*bit9*/
+    U32_T drxPa      :1; /*bit10*/
+    U32_T drxGuBbpPd   :1; /*bit11*/
+    U32_T drxDspPd     :1; /*bit12*/
+    U32_T drxLBbpPd    :1; /*bit13*/
+    U32_T drxPmuEco    :1; /*bit14*/
+    U32_T drxPeriPd    :1; /*bit15*/   
+    U32_T mntn       :1; /*bit16*/
+    U32_T bugChk     :1; /*bit17*/
+    U32_T pmuSwitch     :1; /*bit18*/
+    U32_T reserved1  :13; /*bit19-31*/
+}ST_PWC_SWITCH_STRU;
+
+
+typedef struct 
+{
+    U32_T  ulIsEnable;				/*温度保护使能*/
+    S32_T    lCloseAdcThreshold;
+    U32_T  ulTempOverCount;
+}CHG_BATTERY_HIGH_TEMP_PROT_NV;
+
+typedef struct 
+{
+    U32_T  ulIsEnable;			/*温度保护使能*/
+    S32_T    lCloseAdcThreshold;
+    U32_T  ulTempLowCount;
+}CHG_BATTERY_LOW_TEMP_PROTE_NV;
+
+/* 工厂模式nv项,0 : 非工厂模式 1: 工厂模式**/
+typedef struct
+{
+    U32_T ulFactoryMode;
+}FACTORY_MODE_TYPE;
+
+typedef struct 
+{
+    S16_T temperature;
+    U16_T voltage;
+}CHG_TEMP_ADC_TYPE;
+
+typedef struct
+{
+    CHG_TEMP_ADC_TYPE g_adc_batt_therm_map[31];
+}NV_BATTERY_TEMP_ADC;
+typedef struct ST_PWC_DFS_STRU_S
+{
+	U32_T CcpuUpLimit;   /*C核负载上调限值*/
+	U32_T CcpuDownLimit;  /*C核负载下调限制*/
+	U32_T CcpuUpNum;      /*C核连续高于负载上限次数进行上调*/ 
+	U32_T CcpuDownNum;    /*C核连续低于负载下限次数进行下调*/ 
+	U32_T AcpuUpLimit;	  /*A核负载上调限值*/
+	U32_T AcpuDownLimit;	/*A核负载下调限制*/
+	U32_T AcpuUpNum;	/*A核连续高于负载上限次数进行上调*/ 
+	U32_T AcpuDownNum;  /*A核连续低于负载下限次数进行下调*/ 
+	U32_T DFS_TimerLen;  /*定时查询负载时间*/	
+	U32_T reserved;
+}ST_PWC_DFS_STRU;
+
+
+/*硬测版本nv项,1 : 硬测版本 0: 非硬测版本*/
+typedef struct
+{
+    U32_T ulHwVer;
+}E5_HW_TEST_TYPE;
+
+/*是否支持APT功能nv项,1 : 支持 0: 不支持*/
+typedef struct
+{
+    U32_T ulIsSupportApt;
+}NV_SUPPORT_APT_TYPE;
+
+/*PMU异常保护nv项*/
+typedef struct
+{
+    U8_T TemppmuLimit;  /*PMU温度阈值:0:105℃;1:115℃;2:125℃;3:135℃*/
+	U8_T ulCurIsOff;  /*过热时过流源是否下电：0：下电；1：不下电*/
+	U8_T ulOcpIsRst;  /*过热时是否进行软复位: 0:不软复位 1:软复位*/
+	U8_T PmuproIsOn;  /*PMU异常保护处理是否开启：0：不开启；1：开启*/	
+}PMU_PRO_NV;

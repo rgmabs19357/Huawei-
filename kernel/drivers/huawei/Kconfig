@@ -1,0 +1,9 @@
+menuconfig HUAWEI_DEVICE
+	bool "HUAWEI terminal device support"
+	default y
+	---help---
+		Say yes if you want to enable support for HUAWEI terminal devices.
+
+if HUAWEI_DEVICE
+source "drivers/huawei/drivers/Kconfig"
+endif

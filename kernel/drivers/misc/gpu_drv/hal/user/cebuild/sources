@@ -1,0 +1,40 @@
+##############################################################################
+#
+#    Copyright (c) 2005 - 2013 by Vivante Corp.  All rights reserved.
+#
+#    The material in this file is confidential and contains trade secrets
+#    of Vivante Corporation. This is proprietary information owned by
+#    Vivante Corporation. No part of this work may be disclosed,
+#    reproduced, copied, transmitted, or used in any way for any purpose,
+#    without the express written permission of Vivante Corporation.
+#
+##############################################################################
+
+
+DOSYSGEN=1
+SYNCHRONIZE_DRAIN=1
+
+TARGETNAME = hal.user
+TARGETTYPE = LIBRARY
+
+SOURCES = \
+    ../gc_hal_user.c \
+    ../gc_hal_user_brush.c \
+    ../gc_hal_user_brush_cache.c \
+    ../gc_hal_user_buffer.c \
+    ../gc_hal_user_dump.c \
+    ../gc_hal_user_heap.c \
+    ../gc_hal_user_profiler.c \
+    ../gc_hal_user_query.c \
+    ../gc_hal_user_queue.c \
+    ../gc_hal_user_raster.c \
+    ../gc_hal_user_rect.c \
+    ../gc_hal_user_surface.c \
+
+INCLUDES = \
+    $(INCLUDES); \
+    $(AQROOT)\hal\user; \
+    $(AQROOT)\hal\os\ce\user; \
+    $(AQARCH)\hal\user; \
+
+

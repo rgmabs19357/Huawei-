@@ -1,0 +1,18 @@
+config VIDEO_HI6620_VPP
+    tristate "vpp driver"
+    default n
+    ---help---
+        This is the vpp driver
+
+config VPP_CLK
+    int "VPP Clock Frequence"
+    default "140000000"
+    help
+        Set default vpp clock frequence
+
+config VPP_WAIT_TIMEOUT_COEFF
+    int "VPP wait timeout coefficient"
+    default "1"
+    help
+        Set default vpp wait timeout coefficient
+

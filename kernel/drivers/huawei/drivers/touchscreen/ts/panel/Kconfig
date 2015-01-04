@@ -1,0 +1,9 @@
+config TOUCHSCREEN_SYNAPTICS
+	tristate "touchscreen synaptics driver"
+	default y
+	
+config TOUCHSCREEN_CYPRESS
+	tristate "touchscreen cypress driver"
+	default y
+     
+

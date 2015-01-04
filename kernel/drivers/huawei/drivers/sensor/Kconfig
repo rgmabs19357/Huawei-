@@ -1,0 +1,19 @@
+#sensor unification for differ platform
+config HUAWEI_SENSORS_INPUT_INFO
+	bool "huawei sensor input info"
+	default n
+	help
+		get the huawei sensor input information.
+
+
+source "drivers/huawei/drivers/sensor/accelerometer/Kconfig"
+
+source "drivers/huawei/drivers/sensor/compass/Kconfig"
+
+source "drivers/huawei/drivers/sensor/light/Kconfig"
+
+source "drivers/huawei/drivers/sensor/gyroscope/Kconfig"
+
+source "drivers/huawei/drivers/sensor/captouch/Kconfig"
+
+source "drivers/huawei/drivers/sensor/hall/Kconfig"
